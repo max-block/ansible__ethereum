@@ -1,0 +1,14 @@
+[Unit]
+Description=geth
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/geth --config /etc/geth.toml{{ geth_network_flag }}
+Restart=on-failure
+KillSignal=SIGHUP
+MemoryAccounting=true
+IOAccounting=true
+CPUAccounting=true
+
+[Install]
+WantedBy=default.target

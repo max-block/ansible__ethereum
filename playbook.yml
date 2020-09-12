@@ -1,0 +1,9 @@
+- hosts: servers
+  vars_prompt:
+    - name: playbook_action
+      prompt: action? install_geth install_openethereum ssh_key
+      private: no
+      default: update
+
+  roles:
+    - role: ethereum

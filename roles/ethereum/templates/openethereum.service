@@ -1,0 +1,14 @@
+[Unit]
+Description=OpenEthereum
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/openethereum --config /etc/openethereum.toml{{ ' --no-ancient-blocks' if no_ancient_blocks else '' }}
+Restart=on-failure
+KillSignal=SIGHUP
+MemoryAccounting=true
+IOAccounting=true
+CPUAccounting=true
+
+[Install]
+WantedBy=default.target

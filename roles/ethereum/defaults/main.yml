@@ -1,0 +1,7 @@
+openethereum_version: v3.0.1
+no_ancient_blocks: True
+cache_size: 4096
+rpc_port: "8545"
+ws_port: "8546"
+auto_start_geth: False # Don't start geth on boot for openethereum nodes.
+network: mainnet

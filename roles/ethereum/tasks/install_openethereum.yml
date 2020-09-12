@@ -1,0 +1,19 @@
+- include_tasks: install_geth.yml # We want to have geth to use it as a console
+
+- name: Download openethereum
+  unarchive:
+    src: https://github.com/openethereum/openethereum/releases/download/{{ openethereum_version }}/openethereum-linux-{{ openethereum_version }}.zip
+    dest: /usr/local/bin
+    remote_src: yes
+    mode: "777"
+
+- name: Create /etc/openethereum.toml
+  template: src=openethereum.toml dest=/etc/openethereum.toml force=no
+
+- name: Copy openethereum service file to server
+  template: src=openethereum.service dest=/etc/systemd/system/openethereum.service
+
+- name: Install openethereum.service (stopped state)
+  systemd: name=openethereum state=stopped enabled=yes daemon_reload=yes
+
+- include_tasks: ssh_key.yml

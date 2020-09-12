@@ -1,0 +1,28 @@
+[parity]
+chain = "{{ 'ethereum' if network == 'mainnet' else network }}"
+mode = "active"
+# base_path = "/openethereum"
+
+[rpc]
+interface = "all"
+cors = ["*"]
+hosts = ["all"]
+apis = ["web3", "eth", "pubsub", "net", "parity", "private", "parity_pubsub", "traces", "rpc", "parity_transactions_pool"]
+server_threads = 16
+port = {{ rpc_port }}
+
+[websockets]
+interface = "all"
+hosts = ["all"]
+origins = ["*"]
+apis = ["web3", "eth", "pubsub", "net", "parity", "private", "parity_pubsub", "traces", "rpc", "parity_transactions_pool"]
+port = {{ ws_port }}
+
+[footprint]
+tracing = "off"
+db_compaction = "ssd"
+pruning = "fast"
+cache_size = {{ cache_size }}
+
+[network]
+no_serve_light = true

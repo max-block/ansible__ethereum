@@ -1,0 +1,1 @@
+- debug: msg={{ "ethereum" if network == "mainnet" else network }}

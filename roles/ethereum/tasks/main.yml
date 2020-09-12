@@ -1,0 +1,13 @@
+- include_tasks: test.yml
+  when: playbook_action == "test"
+
+- include_tasks: install_geth.yml
+  when: playbook_action == "install_geth"
+
+- include_tasks: install_openethereum.yml
+  when: playbook_action == "install_openethereum"
+
+- include_tasks: ssh_key.yml
+  when: playbook_action == "ssh_key"
+
+

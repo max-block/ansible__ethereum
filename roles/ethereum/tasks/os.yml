@@ -1,0 +1,35 @@
+- name: Set timezone to UTC
+  timezone: name=UTC
+
+- name: Upgrade all packages to the latest version
+  apt: upgrade=yes update_cache=yes cache_valid_time=86400 # 1 day
+
+- name: Install apt packages
+  apt: pkg={{ item }} state=latest
+  loop:
+    - ntp
+    - mc
+    - tmux
+    - unzip
+
+- name: Start ntp service
+  service: name=ntp state=started enabled=yes
+
+- name: Enable ufw
+  ufw: state=enabled policy=allow direction=outgoing
+
+- name: Allow ssh in
+  ufw: rule=limit name=OpenSSH
+
+- name: Disable default in
+  ufw: direction=incoming policy=deny
+
+- name: Open ports
+  ufw: rule=allow port={{ item }}
+  loop:
+    - "30303"
+    - "{{ rpc_port }}"
+    - "{{ ws_port }}"
+
+- name: Reload ufw
+  ufw: state=reloaded

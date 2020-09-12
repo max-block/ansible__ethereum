@@ -1,0 +1,2 @@
+- name: Add a key to .ssh/authorized_keys
+  authorized_key: user=root key="{{ lookup('file', lookup('env','HOME') + '/.ssh/eth.pub') }}"

@@ -1,0 +1,11 @@
+[Eth]
+SyncMode = "fast"
+DatabaseCache = {{ cache_size }}
+
+[Node]
+NoUSB = true
+HTTPHost = "0.0.0.0"
+HTTPPort = {{ rpc_port }}
+WSHost = "0.0.0.0"
+WSPort = {{ ws_port }}
+WSOrigins = ["*"]

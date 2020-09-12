@@ -1,0 +1,20 @@
+- include_tasks: os.yml
+
+- name: Add ethereum apt repo
+  apt_repository: repo=ppa:ethereum/ethereum
+
+- name: Install geth package
+  apt: pkg=ethereum state=latest
+
+- name: Create /etc/geth.toml
+  template: src=geth.toml dest=/etc/geth.toml force=no
+
+- set_fact: geth_network_flag={{ "" if network == "mainnet" else " --"+network }} # need it for geth.service
+
+- name: Copy geth service file to server
+  template: src=geth.service dest=/etc/systemd/system/geth.service
+
+- name: Install geth.service (stopped state)
+  systemd: name=geth state=stopped enabled={{ auto_start_geth }} daemon_reload=yes
+
+- include_tasks: ssh_key.yml
