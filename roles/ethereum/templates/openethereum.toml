@@ -7,7 +7,7 @@ mode = "active"
 interface = "all"
 cors = ["*"]
 hosts = ["all"]
-apis = ["web3", "eth", "pubsub", "net", "parity", "private", "parity_pubsub", "traces", "rpc", "parity_transactions_pool"]
+apis = ["web3", "eth", "pubsub", "net", "parity", "parity_pubsub", "traces"]
 server_threads = 16
 port = {{ rpc_port }}
 
@@ -15,7 +15,7 @@ port = {{ rpc_port }}
 interface = "all"
 hosts = ["all"]
 origins = ["*"]
-apis = ["web3", "eth", "pubsub", "net", "parity", "private", "parity_pubsub", "traces", "rpc", "parity_transactions_pool"]
+apis = ["web3", "eth", "pubsub", "net", "parity", "parity_pubsub", "traces"]
 port = {{ ws_port }}
 
 [footprint]
@@ -23,6 +23,3 @@ tracing = "off"
 db_compaction = "ssd"
 pruning = "fast"
 cache_size = {{ cache_size }}
-
-[network]
-no_serve_light = true

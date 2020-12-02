@@ -1,4 +1,4 @@
-openethereum_version: v3.0.1
+openethereum_version: v3.1.0
 no_ancient_blocks: True
 cache_size: 4096
 rpc_port: "8545"
