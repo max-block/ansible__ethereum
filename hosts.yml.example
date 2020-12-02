@@ -1,0 +1,6 @@
+servers:
+  hosts:
+    test:
+      rpc_port: 8545
+      ws_port: 8546
+      network: mainnet
