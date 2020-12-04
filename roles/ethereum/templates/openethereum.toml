@@ -23,3 +23,7 @@ tracing = "off"
 db_compaction = "ssd"
 pruning = "fast"
 cache_size = {{ cache_size }}
+
+[snapshots]
+enable = true
+processing_threads = 8
